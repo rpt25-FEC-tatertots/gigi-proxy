@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors'); 
 const axios = require('axios');
 
 const app = express();
@@ -8,15 +9,21 @@ app.use(express.urlencoded({ extended: true }));
 
 let port = 5000;
 
-app.use(express.static(__dirname + '/../public/dist'));
+app.use('/:productID', express.static(__dirname + '/../public/dist'));
+
 
 app.get('/photos', (req, res) => {
-  // const product_id = window.location.pathname;
-  // console.log(product_id);
-  // const product_id = req.params.productID;
-  // console.log('🚙 this is line 17', product_id)
-  let productId = req.query.product_id;
-  axios.get(`http://localhost:5001/photos?product_id=${productId}`)
+  let productId = req.params.productID;
+  axios.get(`http://localhost:5001/photos`)
+    .then(response => {
+      res.send(response.data)
+    })
+    .catch(err => console.log('👎🏽 error on proxy server', err))
+});
+
+app.get('/photos/:productID', (req, res) => {
+  let productId = req.params.productID;
+  axios.get(`http://localhost:5001/photos/${productId}`)
     .then(response => {
       res.send(response.data)
     })
