@@ -30,6 +30,34 @@ app.get('/photos/:productID', (req, res) => {
     .catch(err => console.log('👎🏽 error on proxy server', err))
 });
 
+app.get('/title', (req, res) => {
+  let productId = req.params.productID;
+  axios.get(`http://localhost:5003/title`)
+    .then(response => {
+      res.send(response.data)
+    })
+    .catch(err => console.log('👎🏽 error on proxy server', err))
+});
+
+app.get('/title/:productID', (req, res) => {
+  let productId = req.params.productID;
+  axios.get(`http://localhost:5003/title/${productId}`)
+    .then(response => {
+      res.send(response.data)
+    })
+    .catch(err => console.log('👎🏽 error on proxy server', err))
+});
+
+app.get('/reviews/:productID', (req, res) => {
+  let productId = req.params.productID;
+  axios.get(`http://localhost:5003/reviews/${productId}`)
+    .then(response => {
+      res.send(response.data)
+    })
+    .catch(err => console.log('👎🏽 error on proxy server', err))
+});
+
+
 app.listen(port, function () {
     console.log(`listening on port ${port}`);
 });
