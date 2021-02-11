@@ -93,6 +93,23 @@ app.get('/reviews/:productID', (req, res) => {
     .catch(err => console.log('👎🏽 error on proxy server', err))
 });
 
+app.get('/similar', (req, res) => {
+  let productId = req.params.productID;
+  axios.get(`http://localhost:5008/similar`)
+    .then(response => {
+      res.send(response.data)
+    })
+    .catch(err => console.log('👎🏽 error on proxy server', err))
+});
+
+app.get('/similar/:productID', (req, res) => {
+  let productId = req.params.productID;
+  axios.get(`http://localhost:5008/similar/${productId}`)
+    .then(response => {
+      res.send(response.data)
+    })
+    .catch(err => console.log('👎🏽 error on proxy server', err))
+});
 
 app.listen(port, function () {
     console.log(`listening on port ${port}`);
