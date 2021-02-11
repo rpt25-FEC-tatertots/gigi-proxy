@@ -30,6 +30,42 @@ app.get('/photos/:productID', (req, res) => {
     .catch(err => console.log('👎🏽 error on proxy server', err))
 });
 
+app.get('/locations', (req, res) => {
+  let productId = req.params.productID;
+  axios.get(`http://localhost:5002/locations`)
+    .then(response => {
+      res.send(response.data)
+    })
+    .catch(err => console.log('👎🏽 error on proxy server', err))
+});
+
+app.get('/locations/:productID', (req, res) => {
+  let productId = req.params.productID;
+  axios.get(`http://localhost:5002/locations/${productId}`)
+    .then(response => {
+      res.send(response.data)
+    })
+    .catch(err => console.log('👎🏽 error on proxy server', err))
+});
+
+app.get('/materials', (req, res) => {
+  let productId = req.params.productID;
+  axios.get(`http://localhost:5002/materials`)
+    .then(response => {
+      res.send(response.data)
+    })
+    .catch(err => console.log('👎🏽 error on proxy server', err))
+});
+
+app.get('/materials/:productID', (req, res) => {
+  let productId = req.params.productID;
+  axios.get(`http://localhost:5002/materials/${productId}`)
+    .then(response => {
+      res.send(response.data)
+    })
+    .catch(err => console.log('👎🏽 error on proxy server', err))
+});
+
 app.get('/title', (req, res) => {
   let productId = req.params.productID;
   axios.get(`http://localhost:5003/title`)
