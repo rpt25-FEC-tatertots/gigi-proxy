@@ -7,6 +7,9 @@
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
+/*!****************************!*\
+  !*** ./client/src/app.jsx ***!
+  \****************************/
+eval("\n\n//# sourceURL=webpack://gigi-proxy/./client/src/app.jsx?");
 /******/ })()
 ;
